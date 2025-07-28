@@ -94,4 +94,16 @@ public class PoductRestController {
         return response;
     }
 
+        /**
+     * Search by name
+     * 
+     * @param name
+     * @return
+     */
+    @GetMapping("/products")
+    public ResponseEntity<ProductResponseRest> search() {
+        ResponseEntity<ProductResponseRest> response = productService.search();
+        return response;
+    }
+
 }

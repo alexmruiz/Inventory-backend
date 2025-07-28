@@ -98,6 +98,7 @@ public class ProductServiceImpl implements IProductService {
     @Override
     @Transactional(readOnly = true)
     public ResponseEntity<ProductResponseRest> searchByName(String name) {
+
         ProductResponseRest response = new ProductResponseRest();
         List<Product> list = new ArrayList<>();
         List<Product> listAux = new ArrayList<>();
@@ -107,7 +108,7 @@ public class ProductServiceImpl implements IProductService {
             listAux = productDao.findByNameContainingIgnoreCase(name);
 
             if (listAux.size() > 0) {
-                list.stream().forEach((p) -> {
+                listAux.stream().forEach((p) -> {
                     byte[] imageDescompressed = Util.decompressZLib(p.getPicture());
                     p.setPicture(imageDescompressed);
                     list.add(p);
@@ -140,6 +141,39 @@ public class ProductServiceImpl implements IProductService {
 
         } catch (Exception e) {
             response.setMetada("resupuesta nok", "-1", "Error al eliminar producto");
+            return new ResponseEntity<ProductResponseRest>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<ProductResponseRest>(response, HttpStatus.OK);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public ResponseEntity<ProductResponseRest> search() {
+        
+        ProductResponseRest response = new ProductResponseRest();
+        List<Product> list = new ArrayList<>();
+        List<Product> listAux = new ArrayList<>();
+
+        try {
+            // search by name
+            listAux = (List<Product>) productDao.findAll();
+
+            if (listAux.size() > 0) {
+                listAux.stream().forEach((p) -> {
+                    byte[] imageDescompressed = Util.decompressZLib(p.getPicture());
+                    p.setPicture(imageDescompressed);
+                    list.add(p);
+                });
+
+                response.getProduct().setProducts(list);
+                response.setMetada("Respuesta ok", "00", "Productos encontrados");
+            } else {
+                response.setMetada("resupuesta nok", "-1", "Productos no encontrados");
+                return new ResponseEntity<ProductResponseRest>(response, HttpStatus.NOT_FOUND);
+            }
+
+        } catch (Exception e) {
+            response.setMetada("resupuesta nok", "-1", "Error al buscar producto por nombre");
             return new ResponseEntity<ProductResponseRest>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<ProductResponseRest>(response, HttpStatus.OK);
