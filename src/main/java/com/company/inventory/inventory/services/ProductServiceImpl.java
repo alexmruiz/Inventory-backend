@@ -149,7 +149,7 @@ public class ProductServiceImpl implements IProductService {
     @Override
     @Transactional(readOnly = true)
     public ResponseEntity<ProductResponseRest> search() {
-        
+
         ProductResponseRest response = new ProductResponseRest();
         List<Product> list = new ArrayList<>();
         List<Product> listAux = new ArrayList<>();
@@ -174,6 +174,57 @@ public class ProductServiceImpl implements IProductService {
 
         } catch (Exception e) {
             response.setMetada("resupuesta nok", "-1", "Error al buscar producto por nombre");
+            return new ResponseEntity<ProductResponseRest>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<ProductResponseRest>(response, HttpStatus.OK);
+    }
+
+    @Override
+    @Transactional
+    public ResponseEntity<ProductResponseRest> update(Product product, Long categoryId, Long id) {
+
+        ProductResponseRest response = new ProductResponseRest();
+        List<Product> list = new ArrayList<>();
+
+        try {
+            // search category to set in the product object
+            Optional<Category> category = categoryDao.findById(categoryId);
+
+            if (category.isPresent()) {
+                product.setCategory(category.get());
+            } else {
+                response.setMetada("resupuesta nok", "-1", "Categoria no encontrada");
+                return new ResponseEntity<ProductResponseRest>(response, HttpStatus.NOT_FOUND);
+            }
+
+            // Search the product
+            Optional<Product> productSeach = productDao.findById(id);
+
+            if (productSeach.isPresent()) {
+
+                // se actualizará el producto
+                productSeach.get().setAccount(product.getAccount());
+                productSeach.get().setCategory(product.getCategory());
+                productSeach.get().setName(product.getName());
+                productSeach.get().setPicture(product.getPicture());
+                productSeach.get().setPrice(product.getPrice());
+
+                // save the product in Db
+                Product productUpdate = productDao.save(productSeach.get());
+
+                if (productUpdate != null) {
+                    list.add(productUpdate);
+                    response.getProduct().setProducts(list);
+                    response.setMetada("respuesta ok", "00", "Producto actualizado");
+                }
+
+            } else {
+                response.setMetada("resupuesta nok", "-1", "Producto no actualizado");
+                return new ResponseEntity<ProductResponseRest>(response, HttpStatus.BAD_REQUEST);
+            }
+
+        } catch (Exception e) {
+            response.setMetada("resupuesta nok", "-1", "Error al actualizar producto");
             return new ResponseEntity<ProductResponseRest>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<ProductResponseRest>(response, HttpStatus.OK);
