@@ -18,7 +18,7 @@ import com.company.inventory.inventory.util.Util;
 
 import org.springframework.web.bind.annotation.PostMapping;
 
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
 @RequestMapping("/api/v1")
 public class PoductRestController {
@@ -40,32 +40,39 @@ public class PoductRestController {
      * @throws IOException
      */
     @PostMapping("/products")
-    public ResponseEntity<ProductResponseRest> save(@RequestParam("picture") MultipartFile picture, 
-                                                    @RequestParam("name") String name,
-                                                    @RequestParam("price") int price, 
-                                                    @RequestParam ("account") int account, 
-                                                    @RequestParam ("categoryId") Long categoryId) throws IOException {
-        
+    public ResponseEntity<ProductResponseRest> save(@RequestParam("picture") MultipartFile picture,
+            @RequestParam("name") String name,
+            @RequestParam("price") int price,
+            @RequestParam("account") int account,
+            @RequestParam("categoryId") Long categoryId) throws IOException {
+
         Product product = new Product();
-        product.setName(name);                                                
+        product.setName(name);
         product.setAccount(account);
         product.setPrice(price);
         product.setPicture(Util.compressZLib(picture.getBytes()));
 
         ResponseEntity<ProductResponseRest> response = productService.save(product, categoryId);
-        
+
         return response;
     }
 
     /**
      * Search by Id
+     * 
      * @param id
      * @return
      */
-    @GetMapping ("/products/{id}")
-    public ResponseEntity<ProductResponseRest> searchById(@PathVariable Long id){
+    @GetMapping("/products/{id}")
+    public ResponseEntity<ProductResponseRest> searchById(@PathVariable Long id) {
         ResponseEntity<ProductResponseRest> response = productService.searchById(id);
         return response;
     }
-    
+
+    @GetMapping("/products/filter/{name}")
+    public ResponseEntity<ProductResponseRest> searchByName(@PathVariable String name) {
+        ResponseEntity<ProductResponseRest> response = productService.searchByName(name);
+        return response;
+    }
+
 }
