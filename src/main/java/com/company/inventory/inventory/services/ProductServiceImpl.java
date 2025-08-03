@@ -129,7 +129,7 @@ public class ProductServiceImpl implements IProductService {
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public ResponseEntity<ProductResponseRest> deleteById(Long id) {
 
         ProductResponseRest response = new ProductResponseRest();
