@@ -15,7 +15,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.company.inventory.inventory.model.Product;
 import com.company.inventory.inventory.response.ProductResponseRest;
 import com.company.inventory.inventory.services.IProductService;
+import com.company.inventory.inventory.util.ProductExcelExport;
 import com.company.inventory.inventory.util.Util;
+
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -109,6 +112,7 @@ public class PoductRestController {
 
     /**
      * Update product
+     * 
      * @param picture
      * @param name
      * @param price
@@ -134,6 +138,29 @@ public class PoductRestController {
         ResponseEntity<ProductResponseRest> response = productService.update(product, categoryId, categoryId);
 
         return response;
+    }
+
+    /**
+     * Export excel products
+     * @param response
+     * @throws IOException
+     */
+    @GetMapping("/products/export/excel")
+    public void exportToExcel(HttpServletResponse response) throws IOException {
+
+        response.setContentType("application/octet-stream");
+
+        String headerkey = "Content-Disposition";
+        String headerValue = "attachment; filename=result_product.xlsx";
+        response.setHeader(headerkey, headerValue);
+
+        ResponseEntity<ProductResponseRest> productResponse = productService.search();
+
+        ProductExcelExport excelExport = new ProductExcelExport(
+                productResponse.getBody().getProduct().getProducts());
+
+        excelExport.export(response);
+
     }
 
 }
