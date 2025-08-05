@@ -1,5 +1,7 @@
 package com.company.inventory.inventory.controller;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,8 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.company.inventory.inventory.model.Category;
 import com.company.inventory.inventory.response.CategoryResponseRest;
 import com.company.inventory.inventory.services.ICategoryService;
+import com.company.inventory.inventory.util.CategoryExcelExport;
 
-@CrossOrigin(origins = {"http://localhost:4200"})//Puerto de angular
+import jakarta.servlet.http.HttpServletResponse;
+
+@CrossOrigin(origins = { "http://localhost:4200" }) // Puerto de angular
 @RestController
 @RequestMapping("/api/v1")
 public class CategoryRestController {
@@ -26,6 +31,7 @@ public class CategoryRestController {
 
     /**
      * get all categories
+     * 
      * @return
      */
     @GetMapping("/categories")
@@ -49,6 +55,7 @@ public class CategoryRestController {
 
     /**
      * Save categories
+     * 
      * @param category
      * @return
      */
@@ -62,6 +69,7 @@ public class CategoryRestController {
 
     /**
      * Update Categories
+     * 
      * @param category
      * @param id
      * @return
@@ -76,6 +84,7 @@ public class CategoryRestController {
 
     /**
      * Delete categories
+     * 
      * @param id
      * @return
      */
@@ -84,6 +93,30 @@ public class CategoryRestController {
 
         ResponseEntity<CategoryResponseRest> response = service.deleteById(null, id);
         return response;
+
+    }
+
+    /**
+     * export to excel file
+     * 
+     * @param response
+     * @throws IOException
+     */
+    @GetMapping("/categories/export/excel")
+    public void exportToExcel(HttpServletResponse response) throws IOException {
+
+        response.setContentType("application/octet-stream");
+
+        String headerkey = "Content-Disposition";
+        String headerValue = "attachment; filename=result_category.xlsx";
+        response.setHeader(headerkey, headerValue);
+
+        ResponseEntity<CategoryResponseRest> categoryResponse = service.search();
+
+        CategoryExcelExport excelExport = new CategoryExcelExport(
+                categoryResponse.getBody().getCategoryResponse().getCategory());
+
+        excelExport.export(response);
 
     }
 
