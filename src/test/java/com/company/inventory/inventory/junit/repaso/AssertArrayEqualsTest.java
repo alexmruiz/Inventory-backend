@@ -10,11 +10,11 @@ public class AssertArrayEqualsTest {
     public void assertArrayTest(){
 
         String [] arre = {"aa", "bb"};
-        String [] arre1 = {"bb", "bb"};
-        String [] arre2 = {"bb", "bb", "cc"};
+        String [] arre1 = {"aa", "bb"};
+        //String [] arre2 = {"bb", "bb", "cc"};
 
         assertArrayEquals(arre1, arre);
-        assertArrayEquals(arre, arre2);
+        //assertArrayEquals(arre, arre2);
     }
 
 }

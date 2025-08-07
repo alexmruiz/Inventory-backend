@@ -1,9 +1,9 @@
-package com.company.inventory.inventory.services;
+package com.company.inventory.services;
 
 import org.springframework.http.ResponseEntity;
 
-import com.company.inventory.inventory.model.Product;
-import com.company.inventory.inventory.response.ProductResponseRest;
+import com.company.inventory.model.Product;
+import com.company.inventory.response.ProductResponseRest;
 
 public interface IProductService {
 

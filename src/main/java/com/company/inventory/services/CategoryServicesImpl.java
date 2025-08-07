@@ -1,4 +1,4 @@
-package com.company.inventory.inventory.services;
+package com.company.inventory.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.company.inventory.inventory.dao.ICategoryDao;
-import com.company.inventory.inventory.model.Category;
-import com.company.inventory.inventory.response.CategoryResponseRest;
+import com.company.inventory.dao.ICategoryDao;
+import com.company.inventory.model.Category;
+import com.company.inventory.response.CategoryResponseRest;
 
 @Service
 public class CategoryServicesImpl implements ICategoryService {

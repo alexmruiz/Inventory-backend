@@ -1,8 +1,8 @@
-package com.company.inventory.inventory.response;
+package com.company.inventory.response;
 
 import java.util.List;
 
-import com.company.inventory.inventory.model.Product;
+import com.company.inventory.model.Product;
 
 import lombok.Data;
 

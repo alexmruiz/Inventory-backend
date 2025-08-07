@@ -4,9 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-import com.company.inventory.inventory.model.Category;
-import com.company.inventory.inventory.response.CategoryResponseRest;
-import com.company.inventory.inventory.services.ICategoryService;
+import com.company.inventory.controller.CategoryRestController;
+import com.company.inventory.model.Category;
+import com.company.inventory.response.CategoryResponseRest;
+import com.company.inventory.services.ICategoryService;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

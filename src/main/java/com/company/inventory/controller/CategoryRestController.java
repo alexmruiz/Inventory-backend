@@ -1,4 +1,4 @@
-package com.company.inventory.inventory.controller;
+package com.company.inventory.controller;
 
 import java.io.IOException;
 
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.company.inventory.inventory.model.Category;
-import com.company.inventory.inventory.response.CategoryResponseRest;
-import com.company.inventory.inventory.services.ICategoryService;
-import com.company.inventory.inventory.util.CategoryExcelExport;
+import com.company.inventory.model.Category;
+import com.company.inventory.response.CategoryResponseRest;
+import com.company.inventory.services.ICategoryService;
+import com.company.inventory.util.CategoryExcelExport;
 
 import jakarta.servlet.http.HttpServletResponse;
 

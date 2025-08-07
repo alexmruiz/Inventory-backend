@@ -1,4 +1,4 @@
-package com.company.inventory.inventory.controller;
+package com.company.inventory.controller;
 
 import java.io.IOException;
 
@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.company.inventory.inventory.model.Product;
-import com.company.inventory.inventory.response.ProductResponseRest;
-import com.company.inventory.inventory.services.IProductService;
-import com.company.inventory.inventory.util.ProductExcelExport;
-import com.company.inventory.inventory.util.Util;
+import com.company.inventory.model.Product;
+import com.company.inventory.response.ProductResponseRest;
+import com.company.inventory.services.IProductService;
+import com.company.inventory.util.ProductExcelExport;
+import com.company.inventory.util.Util;
 
 import jakarta.servlet.http.HttpServletResponse;
 

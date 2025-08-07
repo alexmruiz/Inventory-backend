@@ -1,4 +1,4 @@
-package com.company.inventory.inventory.services;
+package com.company.inventory.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,12 +9,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.company.inventory.inventory.dao.ICategoryDao;
-import com.company.inventory.inventory.dao.IProductDao;
-import com.company.inventory.inventory.model.Category;
-import com.company.inventory.inventory.model.Product;
-import com.company.inventory.inventory.response.ProductResponseRest;
-import com.company.inventory.inventory.util.Util;
+import com.company.inventory.dao.ICategoryDao;
+import com.company.inventory.dao.IProductDao;
+import com.company.inventory.model.Category;
+import com.company.inventory.model.Product;
+import com.company.inventory.response.ProductResponseRest;
+import com.company.inventory.util.Util;
 
 @Service
 public class ProductServiceImpl implements IProductService {

@@ -1,8 +1,8 @@
-package com.company.inventory.inventory.dao;
+package com.company.inventory.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.company.inventory.inventory.model.Product;
+import com.company.inventory.model.Product;
 import java.util.List;
 
 public interface IProductDao extends JpaRepository <Product, Long>{
