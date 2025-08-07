@@ -145,7 +145,7 @@ public class PoductRestController {
      * @param response
      * @throws IOException
      */
-    @GetMapping("/products/export/excel")
+    @GetMapping("*")
     public void exportToExcel(HttpServletResponse response) throws IOException {
 
         response.setContentType("application/octet-stream");
