@@ -6,17 +6,12 @@ Aplicación web fullstack desarrollada con **Spring Boot 3** y **Angular 16**, q
 
 ## 📑 Tabla de Contenido
 
-- [📑 Tabla de Contenido](#-tabla-de-contenido)
 - [📌 Descripción del Proyecto](#-descripción-del-proyecto)
 - [🚀 Funcionalidades](#-funcionalidades)
 - [🛠️ Tecnologías Utilizadas](#️-tecnologías-utilizadas)
-- [🖥️ Capturas de Pantalla](#️-capturas-de-pantalla)
+- [🖥️ Capturas de Pantalla](#-capturas-de-pantalla)
 - [📁 Repositorios del Proyecto](#-repositorios-del-proyecto)
-- [⚙️ Instalación y Ejecución](#️-instalación-y-ejecución)
-  - [Backend (Spring Boot)](#backend-spring-boot)
-  - [Frontend (Angular)](#frontend-angular)
 - [✅ Aprendizajes y Experiencia](#-aprendizajes-y-experiencia)
-- [📄 Licencia](#-licencia)
 
 ---
 
@@ -80,14 +75,21 @@ Este sistema permite realizar la gestión completa de productos, movimientos de 
 
 ## 📁 Repositorios del Proyecto
 
-<div align="center">
-
-[![Ver Frontend](https://img.shields.io/badge/GitHub-Frontend-blue?logo=github)](https://github.com/alexmruiz/Front-Inventory)
+[![Ver Frontend](https://img.shields.io/badge/GitHub-Frontend-blue?logo=github)](https://github.com/alexmruiz/Front-Inventory)  
 [![Ver Backend](https://img.shields.io/badge/GitHub-Backend-green?logo=github)](https://github.com/alexmruiz/Inventory-backend)
-
-</div>
 
 ---
 
+## ✅ Aprendizajes y Experiencia
+
+- Desarrollo completo de una aplicación desacoplada (Frontend + Backend)
+- Autenticación y autorización con Keycloak y JWT
+- Creación de API RESTful con Spring Boot
+- Seguridad, pruebas y buenas prácticas de desarrollo
+- Uso de Docker para contenerización de servicios
+- Despliegue en Google Cloud Platform
+- Organización del proyecto con metodología ágil (Kanban)
+
+---
 
 
