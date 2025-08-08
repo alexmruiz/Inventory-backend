@@ -21,7 +21,8 @@ import com.company.inventory.util.CategoryExcelExport;
 
 import jakarta.servlet.http.HttpServletResponse;
 
-@CrossOrigin(origins = { "*" }) // Puerto de angular
+//@CrossOrigin(origins = { "*" })
+@CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
 @RequestMapping("/api/v1")
 public class CategoryRestController {
