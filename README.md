@@ -63,13 +63,10 @@ Este sistema permite realizar la gestión completa de productos, movimientos de 
 
 ## 🖥️ Capturas de Pantalla
 
-> *(Agrega aquí tus capturas usando `![alt](ruta)`)*
-
-- ![Login con Keycloak](ruta-a-la-imagen)
-- ![Dashboard](ruta-a-la-imagen)
-- ![Gestión de productos](ruta-a-la-imagen)
-- ![Formulario de alta](ruta-a-la-imagen)
-- ![Exportación a Excel](ruta-a-la-imagen)
+- ![Login con Keycloak](imgInventory/i1.png)
+- ![Dashboard](imgInventory/i2.png)
+- ![Gestión de productos](imgInventory/i3.png)
+- ![Formulario de alta](imgInventory/i6.png)
 
 ---
 
@@ -89,7 +86,3 @@ Este sistema permite realizar la gestión completa de productos, movimientos de 
 - Uso de Docker para contenerización de servicios
 - Despliegue en Google Cloud Platform
 - Organización del proyecto con metodología ágil (Kanban)
-
----
-
-
